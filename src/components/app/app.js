@@ -40,7 +40,7 @@ export default class App extends Component {
 		null;
 
 		return (
-			<div className="stardb-app">
+			<div className="stardb-app container-fluid">
 				<Header />
 				{ planet }
 
@@ -54,19 +54,30 @@ export default class App extends Component {
 				</div>
 
 				<PeoplePage />
-				<PeoplePage />
-				<div className="row m	b2">
+				<div className="row mb2">
 					<div className="col-md-6">
 						<ItemList 
 							onItemSelected={this.onPersonSelected}
 							getData={this.swapiService.getAllPlanets}
+							renderItem={(item) => (<span>{item.name} <button>!</button></span>)}
 						/>
 					</div>
 					<div className="col-md-6">
 						<PersonDetails personId={this.state.selectedPerson} />
 					</div>
 				</div>
-
+				<div className="row mb2">
+					<div className="col-md-6">
+						<ItemList 
+							onItemSelected={this.onPersonSelected}
+							getData={this.swapiService.getAllStarships}
+							renderItem={({ name, model}) => (`${name} (${model})`)}
+						/>
+					</div>
+					<div className="col-md-6">
+						<PersonDetails personId={this.state.selectedPerson} />
+					</div>
+				</div>
 			</div>
 		);
 	}

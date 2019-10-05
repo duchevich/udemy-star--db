@@ -85,7 +85,7 @@ const PersonView = ({ person }) => {
 			<h4>{name}</h4>
 			<ul className="list-group list-group-flush">
 				<li className="list-group-item">
-				<span className="term">Genderrr</span>
+				<span className="term">Gender</span>
 				<span>{gender}</span>
 				</li>
 				<li className="list-group-item">
