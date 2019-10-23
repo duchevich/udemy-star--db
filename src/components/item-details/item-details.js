@@ -55,12 +55,13 @@ export default class ItemDetails extends Component {
 				image: getImageUrl(item),
 				loading: false,
 				error: false
-			})
+			});
 		})
 		.catch(this.onError);
 	}
 
 	onError = (err) => {
+		console.log(err);
 		this.setState({
 		error: true,
 		loading: false
@@ -69,12 +70,12 @@ export default class ItemDetails extends Component {
 	render() {
 
 		const { item, image } = this.state;
+		
 		if (!item) {
 			return <span>Select a item from a list</span>;
 		}
 	
-		const { id, name, gender,
-					birthYear, eyeColor } = item;
+		const { name } = item;
 	
 		return (
 			<div className="item-details card">

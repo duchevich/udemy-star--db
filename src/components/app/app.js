@@ -9,7 +9,14 @@ import ItemList from '../item-list/item-list';
 import ItemDetails, { Record } from '../item-details/item-details';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row/row';
-
+import {
+    PersonList,
+    PlanetList,
+	StarshipList,
+	PersonDetails,
+    PlanetDetails,
+    StarshipDetails,
+} from '../sw-components';
 import './app.css';
 
 export default class App extends Component {
@@ -40,27 +47,27 @@ export default class App extends Component {
 		<RandomPlanet/> :
 		null;
 
-		const personDetails = (
-			<ItemDetails 
-				itemId={11}
-				getData={this.swapiService.getPerson} 
-				getImageUrl={this.swapiService.getPersonImage}>
+		// const personDetails = (
+		// 	<ItemDetails 
+		// 		itemId={11}
+		// 		getData={this.swapiService.getPerson} 
+		// 		getImageUrl={this.swapiService.getPersonImage}>
 
-				<Record field="gender" label="Gender" />
-				<Record field="eyeColor" label="Eye Color" />
-			</ItemDetails>
-		)
-		const starshipDetails = (
-			<ItemDetails 
-				itemId={5} 
-				getData={this.swapiService.getStarship} 
-				getImageUrl={this.swapiService.getStarshipImage}>
-					<Record field="model" label="Model" />
-					<Record field="length" label="Length" />
-					<Record field="costInCredits" label="Cost" />
-			</ItemDetails>
+		// 		<Record field="gender" label="Gender" />
+		// 		<Record field="eyeColor" label="Eye Color" />
+		// 	</ItemDetails>
+		// )
+		// const starshipDetails = (
+		// 	<ItemDetails 
+		// 		itemId={5} 
+		// 		getData={this.swapiService.getStarship} 
+		// 		getImageUrl={this.swapiService.getStarshipImage}>
+		// 			<Record field="model" label="Model" />
+		// 			<Record field="length" label="Length" />
+		// 			<Record field="costInCredits" label="Cost" />
+		// 	</ItemDetails>
 
-		)
+		// )
 
 		return (
 			<div className="stardb-app container-fluid">
@@ -76,10 +83,10 @@ export default class App extends Component {
 					<ErrorButton />
 				</div>
 
-				<PeoplePage />
+				{/* <PeoplePage /> */}
 				{/* <Row left={personDetails} right={starshipDetails}/> */}
 
-				<div className="row mb2">
+				{/* <div className="row mb2">
 					<div className="col-md-6">
 						<ItemList 
 							onItemSelected={this.onPersonSelected}
@@ -90,17 +97,23 @@ export default class App extends Component {
 					<div className="col-md-6">
 						<ItemDetails personId={this.state.selectedPerson} getData={this.swapiService.getPerson} />
 					</div>
-				</div>
+				</div> */}
 				<div className="row mb2">
 					<div className="col-md-6">
-						<ItemList 
-							onItemSelected={this.onPersonSelected}
-							getData={this.swapiService.getAllStarships}>
-							{(i) => (`${i.name} (${i.model})`)}
-						</ItemList>
+						<PersonList>
+							{({name}) => <span>{name}</span>}
+						</PersonList>
+						<PlanetList>
+							{({name}) => <span>{name}</span>}
+						</PlanetList>
+						<StarshipList>
+							{({name}) => <span>{name}</span>}
+						</StarshipList>
 					</div>
 					<div className="col-md-6">
-						<ItemDetails personId={this.state.selectedPerson}  getData={this.swapiService.getPerson}/>
+						<PersonDetails itemId={11}/>
+						<PlanetDetails itemId={5}/>
+						<StarshipDetails itemId={9}/>
 					</div>
 				</div>
 			
