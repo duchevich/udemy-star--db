@@ -34,6 +34,11 @@ export default class App extends Component {
 						<div className="stardb-app container-fluid">
 							<Header onServiceChange={this.onServiceChange}/>
 							<RandomPlanet />
+							<Route path="/"
+									render={() => <h2>Wellcome to StarDB!</h2>}
+									exact/>
+							<Route path="/people"  
+									render={() => <h2>People</h2>}/>
 							<Route path="/people" component={PeoplePage}/>
 							<Route path="/planets" component={PlanetsPage}/>
 							<Route path="/starships" component={StarshipsPage}/>
